@@ -137,6 +137,7 @@
     display:flex; align-items:center; justify-content:center;
     aspect-ratio:16/9; text-align:center; color:#cfc9e6; font-size:0.9rem;
     background-size:contain; background-repeat:no-repeat; background-position:center;
+    cursor:pointer;
   }
   .comm-list ul{ list-style:none; }
   .comm-list li{
@@ -253,8 +254,8 @@
   </p>
 
   <div class="commissions-grid">
-    <div class="comm-sheet" data-es style="background-image:url('comisiones_es.jpg')"></div>
-    <div class="comm-sheet" data-en style="background-image:url('comisiones_en.jpg')"></div>
+    <div class="comm-sheet" data-es style="background-image:url('comisiones_es.jpg')" onclick="openLightbox(this)"></div>
+    <div class="comm-sheet" data-en style="background-image:url('comisiones_en.jpg')" onclick="openLightbox(this)"></div>
     <div class="comm-list">
       <ul>
         <li><span><span data-es>Cabeza</span><span data-en>Head</span></span><span>$12</span></li>
