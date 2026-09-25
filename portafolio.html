@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomoki Zarina — Portafolio de Arte y Animación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF8FB1;
+    --yellow:#7EC8E3;
+    --teal:#5AB9EA;
+    --purple:#3A2E5C;
+    --cream:#FFF6FA;
+    --ink:#2C2148;
+    --radius:18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  h1,h2,h3,.brand{ font-family:'Baloo 2', sans-serif; }
+
+  /* HEADER */
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 6vw;
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--ink);
+  }
+  .brand{ font-size:1.5rem; font-weight:800; color:var(--purple); }
+  #lang-toggle{
+    display:flex; border:2px solid var(--ink); border-radius:999px; overflow:hidden;
+  }
+  #lang-toggle button{
+    border:none; background:transparent; padding:6px 16px; font-weight:600;
+    font-family:'Inter',sans-serif; cursor:pointer; font-size:0.9rem;
+  }
+  #lang-toggle button.active{ background:var(--ink); color:var(--cream); }
+
+  /* HERO */
+  .hero{
+    padding:9vh 6vw 7vh;
+    display:flex; flex-wrap:wrap; align-items:center; gap:40px;
+    background:linear-gradient(135deg, var(--coral) 0%, var(--yellow) 100%); /* rosa a azul cielo */
+    border-bottom:3px solid var(--ink);
+  }
+  .hero-text{ flex:1; min-width:280px; }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4rem);
+    color:var(--ink);
+    line-height:1.05;
+  }
+  .hero p{
+    margin-top:16px; max-width:44ch; font-size:1.1rem; color:var(--ink);
+  }
+  .hero-portrait{
+    flex:0 0 220px; width:220px; height:220px; border-radius:50%;
+    background:var(--cream) center/cover no-repeat;
+    border:4px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; font-size:0.85rem; color:#8a8397; padding:10px;
+  }
+
+  /* NAV / FILTERS */
+  .filters{
+    display:flex; gap:10px; flex-wrap:wrap;
+    padding:5vh 6vw 2vh;
+  }
+  .filter-btn{
+    border:2px solid var(--ink); background:var(--cream); color:var(--ink);
+    padding:9px 20px; border-radius:999px; font-weight:600; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:0.95rem;
+    transition:transform .15s ease;
+  }
+  .filter-btn:hover{ transform:translateY(-2px); }
+  .filter-btn.active{ background:var(--purple); color:var(--cream); border-color:var(--purple); }
+
+  /* GALLERY */
+  .gallery{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
+    gap:22px; padding:2vh 6vw 8vh;
+  }
+  .card{
+    border:3px solid var(--ink); border-radius:var(--radius);
+    overflow:hidden; background:white;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{ transform:translateY(-5px); box-shadow:6px 6px 0 var(--ink); }
+  .card .thumb{
+    aspect-ratio:1/1; background:#eee; display:flex; align-items:center;
+    justify-content:center; color:#999; font-size:0.85rem; text-align:center; padding:10px;
+    background-size:cover; background-position:center;
+  }
+  video.thumb{ padding:0; object-fit:cover; width:100%; }
+  .card .info{ padding:12px 14px; }
+  .card .info h3{ font-size:1.02rem; }
+  .card .info span{ font-size:0.82rem; color:#8a8397; }
+  .tag-arte .thumb{ background-color:#FFE3D6; }
+  .tag-animacion .thumb{ background-color:#D8F3F1; }
+  .tag-creadores .thumb{ background-color:#F3E2FF; }
+
+  /* COMISIONES */
+  .commissions{
+    background:var(--purple); color:var(--cream);
+    padding:8vh 6vw; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+  }
+  .commissions h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:18px; }
+  .commissions-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:30px;
+  }
+  @media(max-width:700px){ .commissions-grid{ grid-template-columns:1fr; } }
+  .comm-sheet{
+    border:3px solid var(--cream); border-radius:var(--radius);
+    padding:8px; background:rgba(255,255,255,0.05);
+    display:flex; align-items:center; justify-content:center;
+    aspect-ratio:16/9; text-align:center; color:#cfc9e6; font-size:0.9rem;
+    background-size:contain; background-repeat:no-repeat; background-position:center;
+  }
+  .comm-list ul{ list-style:none; }
+  .comm-list li{
+    padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.2);
+    display:flex; justify-content:space-between; font-size:1rem;
+  }
+  .comm-note{ margin-top:20px; font-size:0.95rem; color:#cfc9e6; }
+
+  /* CONTACT */
+  footer{
+    padding:7vh 6vw; text-align:center;
+  }
+  footer h2{ font-size:clamp(1.6rem,3.5vw,2.2rem); color:var(--purple); }
+  .contact-links{
+    display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:24px;
+  }
+  .contact-links a{
+    border:2px solid var(--ink); border-radius:999px; padding:10px 22px;
+    text-decoration:none; color:var(--ink); font-weight:600; font-size:0.95rem;
+    transition:background .15s ease, color .15s ease;
+  }
+  .contact-links a:hover{ background:var(--ink); color:var(--cream); }
+  .copy-email{ position:relative; }
+  .copied-tooltip{
+    position:absolute; left:50%; bottom:calc(100% + 10px); transform:translateX(-50%) translateY(6px);
+    background:var(--ink); color:var(--cream); padding:6px 14px; border-radius:999px;
+    font-size:0.82rem; font-weight:600; white-space:nowrap;
+    opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+  }
+  .copied-tooltip::after{
+    content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    border:6px solid transparent; border-top-color:var(--ink);
+  }
+  .copy-email.show-tooltip .copied-tooltip{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  [data-en]{ display:none; }
+  html[lang="en"] [data-es]{ display:none; }
+  html[lang="en"] [data-en]{ display:inline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Tomoki Zarina ✦ <span data-es>Portafolio</span><span data-en>Portfolio</span></div>
+  <div id="lang-toggle">
+    <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1><span data-es>¡Hola! Soy Tomoki Zarina</span><span data-en>Hi! I'm Tomoki Zarina</span></h1>
+    <p>
+      <span data-es>Ilustradora y animadora. Aquí tienes una muestra de mi trabajo — desde arte de personajes hasta proyectos animados cortos.</span>
+      <span data-en>Illustrator and animator. Here's a sample of my work — from character art to short animated projects.</span>
+    </p>
+  </div>
+  <div class="hero-portrait" style="background-image:url('perfil.jpg')"></div>
+</section>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all" onclick="filterGallery('all', this)">
+    <span data-es>Todo</span><span data-en>All</span>
+  </button>
+  <button class="filter-btn" data-filter="arte" onclick="filterGallery('arte', this)">
+    <span data-es>Arte</span><span data-en>Art</span>
+  </button>
+  <button class="filter-btn" data-filter="animacion" onclick="filterGallery('animacion', this)">
+    <span data-es>Proyectos Animados</span><span data-en>Animated Projects</span>
+  </button>
+  <button class="filter-btn" data-filter="creadores" onclick="filterGallery('creadores', this)">
+    <span data-es>Para Creadores de Contenido</span><span data-en>For Content Creators</span>
+  </button>
+</div>
+
+<div class="gallery" id="gallery">
+
+  <div class="card tag-arte" data-cat="arte">
+    <div class="thumb" style="background-image:url('retrato_tomoki.jpg')"></div>
+    <div class="info">
+      <h3><span data-es>Actualización de mi perfil</span><span data-en>Profile update</span></h3>
+      <span data-es>Arte / 2026</span><span data-en>Art / 2026</span>
+    </div>
+  </div>
+
+  <div class="card tag-animacion" data-cat="animacion">
+    <video class="thumb" src="sacrificia_ride.mp4" muted loop autoplay playsinline></video>
+    <div class="info">
+      <h3>Sacrificia ride</h3>
+      <span data-es>Corto animado / 2026</span><span data-en>Animated short / 2026</span>
+    </div>
+  </div>
+
+  <!-- Copia y pega más tarjetas <div class="card tag-arte" data-cat="arte">...</div>
+       o <div class="card tag-animacion" data-cat="animacion">...</div>
+       o <div class="card tag-creadores" data-cat="creadores">...</div> aquí -->
+
+  <div class="card tag-creadores" data-cat="creadores">
+    <div class="thumb" style="background-image:url('icono_prem.jpg')"></div>
+    <div class="info">
+      <h3><span data-es>Icono para SKU de Discord</span><span data-en>Icon for Discord SKU</span></h3>
+      <span data-es>Comisión / 2026</span><span data-en>Commission / 2026</span>
+    </div>
+  </div>
+
+</div>
+
+<section class="commissions">
+  <h2><span data-es>Comisiones</span><span data-en>Commissions</span></h2>
+  <p style="max-width:60ch">
+    <span data-es>Actualmente abierta a proyectos freelance y comisiones. Estos son mis tipos de encargo y precios de referencia.</span>
+    <span data-en>Currently open for freelance projects and commissions. These are my commission types and reference prices.</span>
+  </p>
+
+  <div class="commissions-grid">
+    <div class="comm-sheet" data-es style="background-image:url('comisiones_es.jpg')"></div>
+    <div class="comm-sheet" data-en style="background-image:url('comisiones_en.jpg')"></div>
+    <div class="comm-list">
+      <ul>
+        <li><span><span data-es>Cabeza</span><span data-en>Head</span></span><span>$12</span></li>
+        <li><span><span data-es>Cintura</span><span data-en>Waist</span></span><span>$18</span></li>
+        <li><span><span data-es>Cuerpo completo</span><span data-en>Full body</span></span><span>$25</span></li>
+        <li><span><span data-es>Fondos</span><span data-en>Backgrounds</span></span><span>+$10</span></li>
+        <li><span><span data-es>Extras</span><span data-en>Extras</span></span><span><span data-es>Depende</span><span data-en>Depends</span></span></li>
+      </ul>
+      <p class="comm-note">
+        <span data-es>Solo PayPal. Contáctame por correo o redes para más detalles y disponibilidad.</span>
+        <span data-en>PayPal only. Contact me by email or social media for details and availability.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2><span data-es>Contacto</span><span data-en>Contact</span></h2>
+  <div class="contact-links">
+    <a href="#" class="copy-email" onclick="copyEmail(event, this)">✉ zarinatomoki@gmail.com<span class="copied-tooltip"><span data-es>¡Copiado!</span><span data-en>Copied!</span></span></a>
+    <a href="https://www.instagram.com/tomoki_zarina/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang==='es');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  }
+  function filterGallery(cat, btn){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card=>{
+      card.style.display = (cat==='all' || card.dataset.cat===cat) ? '' : 'none';
+    });
+  }
+  function copyEmail(e, el){
+    e.preventDefault();
+    const email = 'zarinatomoki@gmail.com';
+    navigator.clipboard.writeText(email).then(()=>{
+      el.classList.add('show-tooltip');
+      clearTimeout(el._tooltipTimer);
+      el._tooltipTimer = setTimeout(()=> el.classList.remove('show-tooltip'), 1500);
+    });
+  }
+</script>
+
+</body>
+</html>
